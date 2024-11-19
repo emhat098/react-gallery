@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import Photos from './components/photos';
+import Loading from '../../components/loading/loading';
 
 function Gallery() {
   return (
@@ -8,7 +9,7 @@ function Gallery() {
         <h1>Gallery</h1>
         <hr />
       </div>
-      <Suspense fallback={<div>Loading ...</div>}>
+      <Suspense fallback={<Loading />}>
         <Photos />
       </Suspense>
     </>

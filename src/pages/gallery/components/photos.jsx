@@ -1,17 +1,21 @@
-import getPhotos from './get-photos';
+import './photos.css';
+import { fetchData } from '../../../data/fetch-data';
+import Photo from './photo';
+import use from '../../../utils/use';
 
-let dataPhotos = null;
-
-const Photos = async () => {
-  if (!dataPhotos) {
-    dataPhotos = await getPhotos();
-  }
-
+const Photos = () => {
+  const dataPhotos = use(
+    fetchData('https://picsum.photos/v2/list?page=1&limit=100'),
+  );
   return (
     <ul>
       {dataPhotos &&
         dataPhotos.length > 0 &&
-        dataPhotos.map((photo) => <li key={photo.id}>{photo.author}</li>)}
+        dataPhotos.map((photo) => (
+          <li key={photo.id}>
+            <Photo {...photo} />
+          </li>
+        ))}
     </ul>
   );
 };
