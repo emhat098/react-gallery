@@ -1,6 +1,7 @@
-import { Suspense } from 'react';
-import Photos from './components/photos';
+import React, { Suspense } from 'react';
 import Loading from '../../components/loading/loading';
+
+const Photos = React.lazy(() => import('./components/photos'));
 
 function Gallery() {
   return (

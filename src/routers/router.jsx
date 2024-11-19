@@ -1,7 +1,9 @@
-import App from '../pages/app/page';
 import Layout from '../components/layout/layout';
-import Gallery from '../pages/gallery/page';
-import NotFound from '../pages/404/page';
+import React from 'react';
+
+const Gallery = React.lazy(() => import('../pages/gallery/page'));
+const App = React.lazy(() => import('../pages/app/page'));
+const NotFound = React.lazy(() => import('../pages/404/page'));
 
 const Router = () => {
   const pathname = window.location.pathname;
